@@ -1,9 +1,7 @@
 package solr;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
