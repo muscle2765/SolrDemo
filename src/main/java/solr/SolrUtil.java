@@ -44,7 +44,7 @@ public class SolrUtil {
     }
 
     /**
-     * 删除solr 数据
+     * 删除指定数据
      * 
      * @param id
      */
@@ -58,6 +58,23 @@ public class SolrUtil {
         }
         return true;
     }
+    
+    /**
+     * 删除所有数据
+     * 
+     * @param id
+     */
+    public static boolean removeAllData() {
+        try {
+        	client.deleteByQuery("*:*");
+            client.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+    
      /**
      * 查询
      * 

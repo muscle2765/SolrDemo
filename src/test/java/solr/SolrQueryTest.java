@@ -7,18 +7,12 @@ import java.util.UUID;
 
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.junit.Test;
 
-public class DemoMain {
-
-	public static void main(String[] args) {
-		Article article = new Article();
-	    article.setId(UUID.randomUUID().toString());
-	    article.setName("数据4");
-	    article.setContent("数据4");
-	    article.setCreateTime(new Date());
-	    SolrUtil.saveSolrResource(article);
-	    
-	    try {
+public class SolrQueryTest {
+	@Test
+	public void queryTest() {
+		try {
 	        QueryResponse respone = SolrUtil.query("数据");
 	        
 	        List<Article> articleList = respone.getBeans(Article.class);
@@ -27,15 +21,15 @@ public class DemoMain {
 	        e.printStackTrace();
 	    } catch (IOException e) {
 	        e.printStackTrace();
-	    }
-	    
+	    }	    
+	}
+	
+	@Test
+	public void queryHighlightTest() {
 	    try {
-			SolrUtil.queryHighlight("药店");
+			SolrUtil.queryHighlight("测试");
 		} catch (SolrServerException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
-	    SolrUtil.removeAllData();
 	}
 }
